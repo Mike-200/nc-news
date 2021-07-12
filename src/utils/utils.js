@@ -6,6 +6,19 @@ const baseApi = axios.create({
 export const getAllArticles = async () => {
   let path = "/articles";
   const { data } = await baseApi.get(path);
-  // console.log("data.articles>>>", data.articles);
   return data.articles;
+};
+
+export const getAllTopics = async () => {
+  let path = "/topics";
+  const { data } = await baseApi.get(path);
+  // console.log("data.topics>>>", data.topics);
+  return data.topics;
+};
+
+export const getArticleComments = async () => {
+  let path = "/articles/:article_id/comments";
+  const { data } = await baseApi.get(path);
+  // console.log("data.comments>>>", data.comments);
+  return data.comments;
 };

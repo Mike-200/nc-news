@@ -2,13 +2,18 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div>
-      <h1>Home Page</h1>
-      <p>Northcoders articles and associated comments</p>
-      <p>Enter username and password</p>
-
-      <Link to="/articles">
-        <button>View articles</button>
-      </Link>
+      <h2 className="TitleCard">Welcome to NC-NEWS</h2>
+      <div className="ResultsCard">
+        <Link to="/users">
+          <p>Login, to add articles and comments</p>
+        </Link>
+      </div>
+      <p>-or-</p>
+      <div className="ResultsCard">
+        <Link to="/articles">
+          <p>Just browse the articles</p>
+        </Link>
+      </div>
     </div>
   );
 };

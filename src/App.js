@@ -1,31 +1,61 @@
 import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
+import { useState, userContext } from "react";
+
+import { UserContext } from "./contexts/User";
 
 import Header from "./components/Header";
 import Home from "./components/Home";
+import Users from "./components/Users";
 import Articles from "./components/Articles";
+import ArticleDetails from "./components/ArticleDetails";
 import Comments from "./components/Comments";
 
 function App() {
+  const defaultUser = {
+    username: "<not logged in>",
+    avatar_url:
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+    name: "<not logged in>",
+  };
+
+  const [loggedInUser, setLoggedInUser] = useState(defaultUser);
+
+  console.log("App.loggedInUser>>>", loggedInUser);
+
   return (
-    <div className="App">
-      <Header />
+    <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
+      <div className="App">
+        <Header defaultUser={defaultUser} />
 
-      <Switch>
-        <Route path="/articles">
-          <Articles />
-        </Route>
+        <Switch>
+          <Route exact path="/users">
+            <Users />
+          </Route>
 
-        <Route path="/comments">
-          <Comments />
-        </Route>
+          <Route exact path="/articles">
+            <Articles />
+          </Route>
 
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </div>
+          <Route exact path="/articles/:article_id">
+            <ArticleDetails />
+          </Route>
+
+          <Route exact path="/articles/:article_id/comments">
+            <Comments />
+          </Route>
+
+          <Route exact path="/">
+            <Home />
+          </Route>
+
+          <Route>
+            <p>404 - not found</p>
+          </Route>
+        </Switch>
+      </div>
+    </UserContext.Provider>
   );
 }
 

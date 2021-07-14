@@ -1,13 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { getAllUsers } from "../utils/utils";
-import { Link } from "react-router-dom";
+import { getAllUsers, getLoggedInUser } from "../utils/utils";
 import { UserContext } from "../contexts/User";
 
 const Users = () => {
   const [users, setUsers] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+  const { setLoggedInUser } = useContext(UserContext);
 
   //console.log("Users.loggedInUser>>>", loggedInUser);
 
@@ -22,9 +21,12 @@ const Users = () => {
       });
   }, []);
 
-  const login = (user) => {
-    //console.log(user);
-    setLoggedInUser(user);
+  const login = (username) => {
+    console.log(username);
+    // now get all user details from the api
+    getLoggedInUser(username).then((apiUser) => {
+      setLoggedInUser(apiUser);
+    });
   };
 
   if (isLoading) {
@@ -46,13 +48,13 @@ const Users = () => {
               key={user.username}
               className="UsersCard"
               onClick={() => {
-                login(user);
+                login(user.username);
               }}
             >
-              <img alt="Home" src={user.avatar_url} className="UsersImage" />
+              {/* <img alt="Home" src={user.avatar_url} className="UsersImage" /> */}
               <div className="UsersText">
-                <p>{user.name}</p>
-                <p>username: {user.username}</p>
+                {/* <p>{user.name}</p> */}
+                <p>{user.username}</p>
               </div>
             </li>
             //       </Link>

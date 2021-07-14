@@ -45,7 +45,7 @@
   padding-right: 20px;
   margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .TitleCard {
@@ -103,7 +103,7 @@ img {
 .App-header {
   background-color: #f48585;
   display: grid;
-  grid-template-areas: "homeIcon title user";
+  grid-template-areas: "homeIcons title user";
   grid-template-columns: 25% 50% 25%;
   /* display: flex;
   flex-direction: row;
@@ -116,7 +116,7 @@ img {
 }
 
 .HeaderImage {
-  grid-area: homeIcon;
+  grid-area: homeIcons;
   float: left;
   margin-left: 10px;
   /* margin-top: 12px; */
@@ -127,4 +127,13 @@ img {
   float: right;
   margin-right: 10px;
   /* margin-top: 12px; */
+}
+
+img {
+  width: 35px;
+  padding-right: 10px;
+}
+
+.RightJustify {
+  float: right;
 }

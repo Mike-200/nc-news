@@ -34,3 +34,23 @@ export const getAllUsers = async () => {
   //console.log("data.username>>>", data);
   return data;
 };
+
+export const getLoggedInUser = async (username) => {
+  let path = `/users/${username}`;
+  const { data } = await baseApi.get(path);
+  //console.log("data.user>>>", data.user);
+  return data.user;
+};
+
+export const postComment = async (article_id, itemBody) => {
+  let path = `/articles/${article_id}/comments`;
+  const { data } = await baseApi.post(path, itemBody);
+  return data;
+};
+
+export const increaseArticleCounter = async (article_id) => {
+  let path = `/articles/${article_id}`;
+  const itemBody = { inc_votes: 1 };
+  const { reply } = await baseApi.patch(path, itemBody);
+  return reply;
+};

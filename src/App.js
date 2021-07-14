@@ -1,7 +1,7 @@
 import "./App.css";
 
 import { Switch, Route } from "react-router-dom";
-import { useState, userContext } from "react";
+import { useState } from "react";
 
 import { UserContext } from "./contexts/User";
 
@@ -11,6 +11,8 @@ import Users from "./components/Users";
 import Articles from "./components/Articles";
 import ArticleDetails from "./components/ArticleDetails";
 import Comments from "./components/Comments";
+import Edit from "./components/Edit";
+import Delete from "./components/Delete";
 
 function App() {
   const defaultUser = {
@@ -22,7 +24,7 @@ function App() {
 
   const [loggedInUser, setLoggedInUser] = useState(defaultUser);
 
-  console.log("App.loggedInUser>>>", loggedInUser);
+  // console.log("App.loggedInUser>>>", loggedInUser);
 
   return (
     <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
@@ -30,20 +32,28 @@ function App() {
         <Header defaultUser={defaultUser} />
 
         <Switch>
-          <Route exact path="/users">
-            <Users />
-          </Route>
-
-          <Route exact path="/articles">
-            <Articles />
+          <Route exact path="/articles/:article_id/comments">
+            <Comments />
           </Route>
 
           <Route exact path="/articles/:article_id">
             <ArticleDetails />
           </Route>
 
-          <Route exact path="/articles/:article_id/comments">
-            <Comments />
+          <Route exact path="/articles">
+            <Articles />
+          </Route>
+
+          <Route exact path="/users">
+            <Users />
+          </Route>
+
+          <Route exact path="/edit">
+            <Edit />
+          </Route>
+
+          <Route exact path="/delete">
+            <Delete />
           </Route>
 
           <Route exact path="/">

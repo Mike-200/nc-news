@@ -22,38 +22,37 @@ const Articles = () => {
       });
   }, []);
 
-  {
-    /* <p>Topic: {article.topic}</p>
-<p>Author: {article.author}</p>
-<p>Date created: {article.created_at}</p>
-<p>
-{article.comment_count} comments{" "}
-<Link to="/comments">
-<button onClick={() => viewComments(article.article_id)}>
-View
-</button>
-</Link>
-</p>
-<p>
-{article.votes} likes <button>I like it too !</button>
-</p> */
-  }
-
   const filterResults = () => {
-    return articles.map((article) => {
-      if (articleFilter === article.topic || articleFilter === "all") {
-        return (
-          <li key={article.article_id} className="ResultsCard">
-            <Link to={`/articles/${article.article_id}`}>
-              <p>{article.title}</p>
-            </Link>
-            <Link to={`/articles/${article.article_id}/comments`}>
-              <p>This article has {article.comment_count} comment/s</p>
-            </Link>
-          </li>
-        );
-      }
+    const filteredArticles = articles.filter(
+      (article) => articleFilter === article.topic || articleFilter === "all"
+    );
+    return filteredArticles.map((article) => {
+      return (
+        <li key={filteredArticles.article_id} className="ResultsCard">
+          <Link to={`/articles/${article.article_id}`}>
+            <p>{article.title}</p>
+          </Link>
+          <Link to={`/articles/${article.article_id}/comments`}>
+            <p>This article has {article.comment_count} comment/s</p>
+          </Link>
+        </li>
+      );
     });
+
+    // return articles.map((article) => {
+    //   if (articleFilter === article.topic || articleFilter === "all") {
+    //     return (
+    //       <li key={article.article_id} className="ResultsCard">
+    //         <Link to={`/articles/${article.article_id}`}>
+    //           <p>{article.title}</p>
+    //         </Link>
+    //         <Link to={`/articles/${article.article_id}/comments`}>
+    //           <p>This article has {article.comment_count} comment/s</p>
+    //         </Link>
+    //       </li>
+    //     );
+    //   }
+    // });
   };
 
   if (isLoading) {

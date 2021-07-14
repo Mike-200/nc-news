@@ -8,9 +8,6 @@ import del from "../assets/garbage.png";
 const Header = ({ defaultUser }) => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
-  //console.log("Header.loggedInUser>>>", loggedInUser);
-  //console.log("Header.defaultUser>>>", defaultUser);
-
   return (
     <header className="App-header">
       <div className="HeaderImage">

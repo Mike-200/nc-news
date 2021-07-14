@@ -18,7 +18,6 @@ export const getArticleById = async (article_id) => {
 export const getAllTopics = async () => {
   let path = "/topics";
   const { data } = await baseApi.get(path);
-  // console.log("data.topics>>>", data.topics);
   return data.topics;
 };
 
@@ -31,14 +30,12 @@ export const getArticleComments = async (article_id) => {
 export const getAllUsers = async () => {
   let path = `/users`;
   const { data } = await baseApi.get(path);
-  //console.log("data.username>>>", data);
   return data;
 };
 
 export const getLoggedInUser = async (username) => {
   let path = `/users/${username}`;
   const { data } = await baseApi.get(path);
-  //console.log("data.user>>>", data.user);
   return data.user;
 };
 
@@ -53,4 +50,11 @@ export const increaseArticleCounter = async (article_id) => {
   const itemBody = { inc_votes: 1 };
   const { reply } = await baseApi.patch(path, itemBody);
   return reply;
+};
+
+export const getAllComments = async () => {
+  let path = "/comments";
+  const { data } = await baseApi.get(path);
+  //console.log("data>>>", data);
+  return data;
 };

@@ -7,24 +7,25 @@ const ArticleDetails = () => {
   const { article_id } = useParams();
   const [articleDetails, setArticleDetails] = useState([]);
   const [showAddCommentsPage, setShowAddCommentsPage] = useState(false);
-  const [votesChange, setVotesChange] = useState(1);
+  const [votesChange, setVotesChange] = useState(0);
   const [votingError, setVotingError] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id).then((apiArticle) => {
       setArticleDetails(apiArticle);
     });
-  }, [articleDetails]);
+  });
 
   const increaseVotes = () => {
     setVotingError(false);
     setVotesChange((currVotesChange) => {
-      console.log("votesChange>>>", votesChange);
       return currVotesChange + 1;
     });
     increaseArticleCounter(article_id).catch((err) => {
       setVotingError(true);
-      setVotesChange(0);
+      setVotesChange((currVotesChange) => {
+        return currVotesChange - 1;
+      });
     });
   };
 
@@ -36,7 +37,7 @@ const ArticleDetails = () => {
         <p>Topic - {articleDetails.topic}</p>
         <p>Created - {articleDetails.created_at}</p>
         <p>{articleDetails.body}</p>
-        <p>Likes: {articleDetails.votes}</p>
+        <p>Likes: {articleDetails.votes + votesChange}</p>
         <button disabled={votesChange > 5} onClick={increaseVotes}>
           I like this article !
         </button>

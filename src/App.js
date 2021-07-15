@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import { useState } from "react";
 
 import { UserContext } from "./contexts/User";
@@ -61,7 +61,12 @@ function App() {
           </Route>
 
           <Route>
-            <p>404 - not found</p>
+            <main>
+              <h3>The requested page does not exist</h3>
+              <Link to="/">
+                <button>Go to home page</button>
+              </Link>
+            </main>
           </Route>
         </Switch>
       </div>

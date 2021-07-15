@@ -17,7 +17,9 @@ const AddComments = ({ showAddCommentsPage, setShowAddCommentsPage }) => {
   function handleSubmit(event) {
     event.preventDefault();
     if (itemBody.username === "<not logged in>" || !itemBody.username) {
-      setCommentsPostedSuccessfully("Log in and try again");
+      setCommentsPostedSuccessfully(
+        "You must be logged in to post a comment. \nLog in and try again"
+      );
       return;
     }
     if (!itemBody.body) {
@@ -61,17 +63,20 @@ const AddComments = ({ showAddCommentsPage, setShowAddCommentsPage }) => {
           <Link to="/articles">
             <button>Return to articles</button>
           </Link>,
+
+          <Link to={`/articles/${article_id}/comments`}>
+            <button>View all the comments about htis article</button>
+          </Link>,
         ]
       ) : (
-        <p></p>
+        <button
+          onClick={() => {
+            setShowAddCommentsPage(false);
+          }}
+        >
+          Cancel
+        </button>
       )}
-      <button
-        onClick={() => {
-          setShowAddCommentsPage(false);
-        }}
-      >
-        Cancel
-      </button>
     </div>
   );
 };

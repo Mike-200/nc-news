@@ -10,7 +10,7 @@ const Header = ({ defaultUser }) => {
 
   return (
     <header className="App-header">
-      <div className="HeaderImage">
+      <span>
         <Link to="/">
           <img alt="Home" src={home} />
         </Link>
@@ -26,11 +26,11 @@ const Header = ({ defaultUser }) => {
         <Link to="/delete">
           <img alt="Delete an acticle" src={del} />
         </Link>
-      </div>
-
+      </span>
       <h1>NC-NEWS</h1>
       <Link to="/users">
-        <div className="HeaderUser">
+        <span className="HeaderUser">
+          <span>{loggedInUser.username} </span>
           <img
             alt="Logged in user"
             src={loggedInUser.avatar_url}
@@ -38,19 +38,18 @@ const Header = ({ defaultUser }) => {
           />
           {loggedInUser.username !== "<not logged in>" ? (
             [
-              <p>{loggedInUser.username}</p>,
               <p
                 onClick={() => {
                   setLoggedInUser(defaultUser);
                 }}
               >
-                log out
+                --log out--
               </p>,
             ]
           ) : (
             <p>Go to login page</p>
           )}
-        </div>
+        </span>
       </Link>
     </header>
   );

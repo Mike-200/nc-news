@@ -9,12 +9,17 @@ const ArticleDetails = () => {
   const [showAddCommentsPage, setShowAddCommentsPage] = useState(false);
   const [votesChange, setVotesChange] = useState(0);
   const [votingError, setVotingError] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     getArticleById(article_id).then((apiArticle) => {
-      setArticleDetails(apiArticle);
+      if (!apiArticle) {
+        setHasError(true);
+      } else {
+        setArticleDetails(apiArticle);
+      }
     });
-  });
+  }, [article_id]);
 
   const increaseVotes = () => {
     setVotingError(false);
@@ -28,6 +33,17 @@ const ArticleDetails = () => {
       });
     });
   };
+
+  if (hasError) {
+    return (
+      <main>
+        <h3>You have manually entered an invalid article id</h3>
+        <Link to="/articles">
+          <button>Click to view all articles</button>
+        </Link>
+      </main>
+    );
+  }
 
   return (
     <main>

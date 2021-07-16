@@ -90,6 +90,9 @@ const Delete = () => {
     return (
       <div>
         <h2>Loading data...</h2>
+        <Link to="/">
+          <button>Return to Home page</button>
+        </Link>
       </div>
     );
   }

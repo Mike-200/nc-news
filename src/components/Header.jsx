@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
-import home from "../assets/home.png";
-import edit from "../assets/edit.png";
-import del from "../assets/garbage.png";
+import home from "../assets/icons/home.png";
+import edit from "../assets/icons/edit.png";
+import del from "../assets/icons/garbage.png";
 
 const Header = ({ defaultUser }) => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);

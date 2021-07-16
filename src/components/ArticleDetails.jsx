@@ -9,16 +9,22 @@ const ArticleDetails = () => {
   const [showAddCommentsPage, setShowAddCommentsPage] = useState(false);
   const [votesChange, setVotesChange] = useState(0);
   const [votingError, setVotingError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    getArticleById(article_id).then((apiArticle) => {
-      if (!apiArticle) {
-        setHasError(true);
-      } else {
-        setArticleDetails(apiArticle);
-      }
-    });
+    setIsLoading(true);
+    getArticleById(article_id)
+      .then((apiArticle) => {
+        if (!apiArticle) {
+          setHasError(true);
+        } else {
+          setArticleDetails(apiArticle);
+        }
+      })
+      .then(() => {
+        setIsLoading(false);
+      });
   }, [article_id]);
 
   const increaseVotes = () => {
@@ -34,6 +40,17 @@ const ArticleDetails = () => {
     });
   };
 
+  if (isLoading) {
+    return (
+      <div>
+        <h2>Loading data...</h2>
+        <Link to="/">
+          <button>Return to Home page</button>
+        </Link>
+      </div>
+    );
+  }
+
   if (hasError) {
     return (
       <main>
@@ -42,6 +59,17 @@ const ArticleDetails = () => {
           <button>Click to view all articles</button>
         </Link>
       </main>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div>
+        <h2>Loading data...</h2>
+        <Link to="/">
+          <button>Cancel</button>
+        </Link>
+      </div>
     );
   }
 

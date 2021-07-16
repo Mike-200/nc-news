@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const Users = () => {
   const [users, setUsers] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
   //console.log("Users.loggedInUser>>>", loggedInUser);
@@ -34,6 +33,9 @@ const Users = () => {
     return (
       <div>
         <h2>Loading data...</h2>
+        <Link to="/">
+          <button>Return to Home page</button>
+        </Link>
       </div>
     );
   }
@@ -62,6 +64,9 @@ const Users = () => {
                       <h3>Logged in</h3>,
                       <Link to="/">
                         <button>Back to home screen</button>
+                      </Link>,
+                      <Link to="/delete">
+                        <button>Manage my comments</button>
                       </Link>,
                       <p> </p>,
                     ]

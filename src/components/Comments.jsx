@@ -7,24 +7,42 @@ const Comments = () => {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
   const [showAddCommentsPage, setShowAddCommentsPage] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   //console.log("article_id>>>", article_id);
 
   useEffect(() => {
-    getArticleComments(article_id).then((apiComments) => {
-      if (!apiComments) {
-        setHasError(true);
-      } else {
-        setComments(apiComments);
-      }
-    });
+    setIsLoading(true);
+    getArticleComments(article_id)
+      .then((apiComments) => {
+        if (!apiComments) {
+          setHasError(true);
+        } else {
+          setComments(apiComments);
+        }
+      })
+      .then(() => {
+        setIsLoading(false);
+      });
     // .then(console.log("comments>>>", comments));
   }, [article_id]);
 
   const addALike = () => {
     console.log("I like it");
+    // back end api not written yet to accept these likes
   };
+
+  if (isLoading) {
+    return (
+      <div>
+        <h2>Loading data...</h2>
+        <Link to="/">
+          <button>Return to Home page</button>
+        </Link>
+      </div>
+    );
+  }
 
   if (hasError) {
     return (
@@ -59,6 +77,7 @@ const Comments = () => {
             />
           )}
         </div>
+
         <ul>
           {comments.map((comment) => {
             return (

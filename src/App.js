@@ -13,6 +13,7 @@ import ArticleDetails from "./components/ArticleDetails";
 import Comments from "./components/Comments";
 import Edit from "./components/Edit";
 import Delete from "./components/Delete";
+import Information from "./components/Information";
 
 function App() {
   const defaultUser = {
@@ -54,6 +55,10 @@ function App() {
 
           <Route exact path="/delete">
             <Delete />
+          </Route>
+
+          <Route exact path="/information">
+            <Information />
           </Route>
 
           <Route exact path="/">

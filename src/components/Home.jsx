@@ -16,7 +16,6 @@ const Home = () => {
         </div>
         {loggedInUser.username === "<not logged in>"
           ? [
-              <p>-or-</p>,
               <div className="ResultsCard">
                 <Link to="/users">
                   <p>Login, to add articles and comments</p>
@@ -24,6 +23,11 @@ const Home = () => {
               </div>,
             ]
           : null}
+        <div className="ResultsCard">
+          <Link to="/information">
+            <p>Information</p>
+          </Link>
+        </div>
       </main>
     </div>
   );

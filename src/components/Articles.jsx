@@ -12,6 +12,7 @@ const Articles = () => {
   useEffect(() => {
     setIsLoading(true);
     getAllArticles(sortBy).then((apiArticles) => {
+      console.log("allArticles>>>", articles);
       setArticles(apiArticles);
     });
     getAllTopics()
@@ -25,6 +26,7 @@ const Articles = () => {
 
   // I produced this filtering code before remembering that the api could handle the filtering
   // Rather than change it, I have left it in, as the sorting demonstrates the functionality of passing queries to the endpoint
+  // As it happens, this code is more efficient than by using the api call, as it repies less on the internet and just filters in the app. The website runs quicker this way
   const filterResults = () => {
     const filteredArticles = articles.filter(
       (article) => articleFilter === article.topic || articleFilter === "all"
@@ -51,6 +53,9 @@ const Articles = () => {
     return (
       <div>
         <h2>Loading data...</h2>
+        <Link to="/">
+          <button>Return to Home page</button>
+        </Link>
       </div>
     );
   }

@@ -64,8 +64,9 @@ const AddComments = ({ showAddCommentsPage, setShowAddCommentsPage }) => {
             <button>Return to articles</button>
           </Link>,
 
+          // how do I force this refresh to occur as it doesn't ???
           <Link to={`/articles/${article_id}/comments`}>
-            <button>View all the comments about htis article</button>
+            <button>View all the comments about this article</button>
           </Link>,
         ]
       ) : (

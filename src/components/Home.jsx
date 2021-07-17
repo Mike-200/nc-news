@@ -9,21 +9,21 @@ const Home = () => {
     <div className="App">
       <h2 className="TitleCard">Welcome to NC-NEWS</h2>
       <main>
-        <div className="ResultsCard">
+        <div className="Home__Cards">
           <Link to="/articles">
             <p>Browse articles</p>
           </Link>
         </div>
         {loggedInUser.username === "<not logged in>"
           ? [
-              <div className="ResultsCard">
+              <div className="Home__Cards">
                 <Link to="/users">
                   <p>Login, to add articles and comments</p>
                 </Link>
               </div>,
             ]
           : null}
-        <div className="ResultsCard">
+        <div className="Home__Cards">
           <Link to="/information">
             <p>Information</p>
           </Link>

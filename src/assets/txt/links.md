@@ -2,7 +2,7 @@
 
 --Hostings--
 
-This site: https://herokuplaceholder
+This site: https://nc-news-mike-j.netlify.app
 
 The back-end relating to this site https://??????? Is there one???
 

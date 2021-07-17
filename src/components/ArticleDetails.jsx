@@ -76,7 +76,7 @@ const ArticleDetails = () => {
   return (
     <main>
       <h2 className="TitleCard">{articleDetails.title}</h2>
-      <div className="ResultsCard">
+      <div className="Home__Cards">
         <p>Written by {articleDetails.author}</p>
         <p>Topic - {articleDetails.topic}</p>
         <p>Created - {articleDetails.created_at}</p>

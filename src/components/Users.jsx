@@ -43,7 +43,7 @@ const Users = () => {
   return (
     <div>
       <h1 className="TitleCard">Select your username</h1>
-      <ul>
+      <ul className="Grid__Container">
         {users.map((user) => {
           return (
             //         <Link to={`/users/${user.username}`}>

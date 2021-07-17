@@ -78,11 +78,11 @@ const Comments = () => {
           )}
         </div>
 
-        <ul>
+        <ul className="Grid__Container">
           {comments.map((comment) => {
             return (
-              <div className="ResultsCard">
-                <li key={comment.comment_id}>
+              <div>
+                <li key={comment.comment_id} className="ResultsCard">
                   <p>{comment.author}</p>
                   <p> - commented - </p>
                   <p>{comment.body}</p>

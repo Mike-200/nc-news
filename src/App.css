@@ -150,7 +150,7 @@ img {
   padding-right: 40px;
 }
 
-.ResultsCard {
+.Home__Cards {
   background-color: #f4f5b9;
   border-radius: 20px;
   border-style: solid;
@@ -160,15 +160,35 @@ img {
   padding-right: 20px;
   margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 30px;
-  /* min-width: 500px;
-  max-width: 750px; */
+  margin-bottom: 40px;
+  max-width: 630px;
 }
 
-/* @media only screen and (min-width: 1000px) {
-  .ResultsCard {
+.Grid__Container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-bottom: 30px;
+  grid-gap: 20px;
+}
+
+.ResultsCard {
+  background-color: #f4f5b9;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #f48585;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media only screen and (min-width: 750px) {
+  .Home__Cards {
+    margin-left: auto;
+    margin-right: auto;
   }
-} */
+}
 
 /* .Grid {
   display: grid;

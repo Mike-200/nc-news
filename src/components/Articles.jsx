@@ -33,18 +33,20 @@ const Articles = () => {
     );
     return filteredArticles.map((article) => {
       return (
-        <li key={filteredArticles.article_id} className="ResultsCard">
-          <Link to={`/articles/${article.article_id}`}>
-            <p>{article.title}</p>
-          </Link>
-          <div className="Articles__dateAndVotes">
-            <span>Posted on {article.created_at.slice(0, 10)}</span>
-            <span>{article.votes} votes received</span>
-          </div>
-          <Link to={`/articles/${article.article_id}/comments`}>
-            <p>This article has {article.comment_count} comment/s</p>
-          </Link>
-        </li>
+        <main>
+          <li key={filteredArticles.article_id} className="ResultsCard">
+            <Link to={`/articles/${article.article_id}`}>
+              <p>{article.title}</p>
+            </Link>
+            <div className="Articles__dateAndVotes">
+              <span>Posted on {article.created_at.slice(0, 10)}</span>
+              <span>{article.votes} votes received</span>
+            </div>
+            <Link to={`/articles/${article.article_id}/comments`}>
+              <p>This article has {article.comment_count} comment/s</p>
+            </Link>
+          </li>
+        </main>
       );
     });
   };
@@ -94,9 +96,7 @@ const Articles = () => {
           </select>
         </span>
       </h4>
-      <main>
-        <ul>{filterResults()}</ul>
-      </main>
+      <ul className="Grid__Container">{filterResults()}</ul>
     </div>
   );
 };

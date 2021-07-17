@@ -112,7 +112,7 @@ const Delete = () => {
           ]
         : null}
 
-      <ul>{filterResults()}</ul>
+      <ul className="Grid__Container">{filterResults()}</ul>
     </div>
   );
 };

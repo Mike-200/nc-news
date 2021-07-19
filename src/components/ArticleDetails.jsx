@@ -16,10 +16,10 @@ const ArticleDetails = () => {
     setIsLoading(true);
     getArticleById(article_id)
       .then((apiArticle) => {
-        if (!apiArticle) {
+        if (!apiArticle.article) {
           setHasError(true);
         } else {
-          setArticleDetails(apiArticle);
+          setArticleDetails(apiArticle.article);
         }
       })
       .then(() => {
@@ -40,17 +40,6 @@ const ArticleDetails = () => {
     });
   };
 
-  if (isLoading) {
-    return (
-      <div>
-        <h2>Loading data...</h2>
-        <Link to="/">
-          <button>Return to Home page</button>
-        </Link>
-      </div>
-    );
-  }
-
   if (hasError) {
     return (
       <main>
@@ -67,7 +56,7 @@ const ArticleDetails = () => {
       <div>
         <h2>Loading data...</h2>
         <Link to="/">
-          <button>Cancel</button>
+          <button>Return to Home page</button>
         </Link>
       </div>
     );
@@ -75,7 +64,7 @@ const ArticleDetails = () => {
 
   return (
     <main>
-      <h2 className="TitleCard">{articleDetails.title}</h2>
+      <h2 className="ArticleDetail__TitleCard">{articleDetails.title}</h2>
       <div className="Home__Cards">
         <p>Written by {articleDetails.author}</p>
         <p>Topic - {articleDetails.topic}</p>

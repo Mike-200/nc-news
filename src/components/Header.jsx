@@ -10,23 +10,25 @@ const Header = ({ defaultUser }) => {
 
   return (
     <header className="App-header">
-      <span>
-        <Link to="/">
-          <img alt="Home" src={home} />
-        </Link>
+      <div>
+        <span className="HeaderImage">
+          <Link to="/">
+            <img alt="Home" src={home} />
+          </Link>
 
-        {/* <Link to="/add">
+          {/* <Link to="/add">
           <img alt="Add an acticle" src={add} />
         </Link> */}
 
-        <Link to="/edit">
-          <img alt="Edit an acticle" src={edit} />
-        </Link>
+          <Link to="/edit">
+            <img alt="Edit an acticle" src={edit} />
+          </Link>
 
-        <Link to="/delete">
-          <img alt="Delete an acticle" src={del} />
-        </Link>
-      </span>
+          <Link to="/delete">
+            <img alt="Delete an acticle" src={del} />
+          </Link>
+        </span>
+      </div>
       <h1>NC-NEWS</h1>
       <Link to="/users">
         <span className="HeaderUser">
@@ -37,15 +39,15 @@ const Header = ({ defaultUser }) => {
             className="UsersImage"
           />
           {loggedInUser.username !== "<not logged in>" ? (
-            [
+            <div>
               <p
                 onClick={() => {
                   setLoggedInUser(defaultUser);
                 }}
               >
                 --log out--
-              </p>,
-            ]
+              </p>
+            </div>
           ) : (
             <p>Go to login page</p>
           )}

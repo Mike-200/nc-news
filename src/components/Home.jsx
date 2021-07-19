@@ -14,15 +14,13 @@ const Home = () => {
             <p>Browse articles</p>
           </Link>
         </div>
-        {loggedInUser.username === "<not logged in>"
-          ? [
-              <div className="Home__Cards">
-                <Link to="/users">
-                  <p>Login, to add articles and comments</p>
-                </Link>
-              </div>,
-            ]
-          : null}
+        {loggedInUser.username === "<not logged in>" ? (
+          <div className="Home__Cards">
+            <Link to="/users">
+              <p>Login, to add articles and comments</p>
+            </Link>
+          </div>
+        ) : null}
         <div className="Home__Cards">
           <Link to="/information">
             <p>Information</p>

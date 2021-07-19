@@ -8,7 +8,6 @@ const AddComments = ({ showAddCommentsPage, setShowAddCommentsPage }) => {
   const { loggedInUser } = useContext(UserContext);
   const [commentsPostedSuccessfully, setCommentsPostedSuccessfully] =
     useState("");
-  // const [errorInPostCommentData, setErrorInPostCommentData] = useState(false)
   const [itemBody, setItemBody] = useState({
     username: loggedInUser.username,
     body: "",
@@ -35,15 +34,12 @@ const AddComments = ({ showAddCommentsPage, setShowAddCommentsPage }) => {
   function handleChange(event, keyToChange) {
     setCommentsPostedSuccessfully("");
     setItemBody((currItemBody) => {
-      //console.log("currItemBody>>>", currItemBody);
       const copyOfItemBody = {
         ...currItemBody,
         [keyToChange]: event.target.value,
       };
-      //console.log("copyOfItemBody", copyOfItemBody);
       return copyOfItemBody;
     });
-    //console.log("itemBody>>>", itemBody);
   }
 
   return (

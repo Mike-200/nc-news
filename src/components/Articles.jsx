@@ -8,12 +8,16 @@ const Articles = () => {
   const [articleFilter, setArticleFilter] = useState("all");
   const [sortBy, setSortBy] = useState("created_at");
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     getAllArticles(sortBy).then((apiArticles) => {
-      console.log("allArticles>>>", articles);
-      setArticles(apiArticles);
+      if (!apiArticles.articles) {
+        setHasError(true);
+      } else {
+        setArticles(apiArticles.articles);
+      }
     });
     getAllTopics()
       .then((apiTopics) => {
@@ -33,23 +37,34 @@ const Articles = () => {
     );
     return filteredArticles.map((article) => {
       return (
-        <main>
-          <li key={filteredArticles.article_id} className="ResultsCard">
-            <Link to={`/articles/${article.article_id}`}>
-              <p>{article.title}</p>
-            </Link>
-            <div className="Articles__dateAndVotes">
-              <span>Posted on {article.created_at.slice(0, 10)}</span>
-              <span>{article.votes} votes received</span>
-            </div>
-            <Link to={`/articles/${article.article_id}/comments`}>
-              <p>This article has {article.comment_count} comment/s</p>
-            </Link>
-          </li>
-        </main>
+        <li key={filteredArticles.article_id} className="ResultsCard">
+          <Link to={`/articles/${article.article_id}`}>
+            <p>{article.title}</p>
+          </Link>
+          <div className="Articles__dateAndVotes">
+            <span>Posted on {article.created_at.slice(0, 10)}</span>
+            <span>{article.votes} votes received</span>
+          </div>
+          <Link to={`/articles/${article.article_id}/comments`}>
+            <p>This article has {article.comment_count} comment/s</p>
+          </Link>
+        </li>
       );
     });
   };
+
+  if (hasError) {
+    return (
+      <div>
+        <h3>Do data received from the server</h3>
+        <h3>The server may be offline of there is no internet connection</h3>
+        <h3>Check your internet connection and try again</h3>
+        <Link to="/">
+          <button>Return to Home page</button>
+        </Link>
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (
@@ -76,7 +91,6 @@ const Articles = () => {
               setArticleFilter(event.target.value);
             }}
           >
-            {/* <option value="">-- Select --</option> */}
             <option value="all">all</option>
             {topics.map((topic) => {
               return <option key={topic.slug}>{topic.slug}</option>;

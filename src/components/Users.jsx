@@ -22,7 +22,6 @@ const Users = () => {
   }, []);
 
   const login = (username) => {
-    console.log(username);
     // now get all user details from the api
     getLoggedInUser(username).then((apiUser) => {
       setLoggedInUser(apiUser);
@@ -58,19 +57,18 @@ const Users = () => {
               <div>
                 {/* <p>{user.name}</p> */}
                 <p>{user.username}</p>
-                {console.log("line 58 user", user)}
-                {user.username === loggedInUser.username
-                  ? [
-                      <h3>Logged in</h3>,
-                      <Link to="/">
-                        <button>Back to home screen</button>
-                      </Link>,
-                      <Link to="/delete">
-                        <button>Manage my comments</button>
-                      </Link>,
-                      <p> </p>,
-                    ]
-                  : null}
+                {user.username === loggedInUser.username ? (
+                  <div>
+                    <h3>Logged in</h3>
+                    <Link to="/">
+                      <button>Back to home screen</button>
+                    </Link>
+                    <Link to="/delete">
+                      <button>Manage my comments</button>
+                    </Link>
+                    <p> </p>
+                  </div>
+                ) : null}
               </div>
             </li>
             //       </Link>

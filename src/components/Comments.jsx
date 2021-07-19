@@ -88,6 +88,8 @@ const Comments = () => {
                   <p>{comment.body}</p>
                   <p>Likes {comment.votes}</p>
                   <button onClick={addALike}>I like this comment !</button>
+                  <button>I really dislike this comment !</button>
+
                   <p> </p>
                 </li>
               </div>

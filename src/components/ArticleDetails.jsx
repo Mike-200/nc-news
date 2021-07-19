@@ -27,15 +27,15 @@ const ArticleDetails = () => {
       });
   }, [article_id]);
 
-  const increaseVotes = () => {
+  const increaseVotes = (votes) => {
     setVotingError(false);
     setVotesChange((currVotesChange) => {
-      return currVotesChange + 1;
+      return currVotesChange + votes;
     });
-    increaseArticleCounter(article_id).catch((err) => {
+    increaseArticleCounter(article_id, votes).catch((err) => {
       setVotingError(true);
       setVotesChange((currVotesChange) => {
-        return currVotesChange - 1;
+        return (currVotesChange = 0);
       });
     });
   };
@@ -82,12 +82,26 @@ const ArticleDetails = () => {
         <p>Created - {articleDetails.created_at}</p>
         <p>{articleDetails.body}</p>
         <p>Likes: {articleDetails.votes + votesChange}</p>
-        <button disabled={votesChange > 5} onClick={increaseVotes}>
+        <button
+          disabled={votesChange > 0}
+          onClick={() => {
+            increaseVotes(1);
+          }}
+        >
           I like this article !
         </button>
-        {votesChange > 5 ? (
+        <button
+          disabled={votesChange < 0}
+          onClick={() => {
+            increaseVotes(-1);
+          }}
+        >
+          I really dislike this article !
+        </button>
+        {/* the following code is for when voting number are changed from 1 */}
+        {/* {votesChange > 0 ? (
           <p>I think that enough voting - don't you !!!</p>
-        ) : null}
+        ) : null} */}
         {votingError ? <p>Error. Vote not registered</p> : null}
         <Link to={`/articles/${articleDetails.article_id}/comments`}>
           <p>View comments about this article</p>

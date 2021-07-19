@@ -17,18 +17,24 @@ This app is hosted on Heroku. The repo is stored on github. The latest addresses
 To run this repo locally:-
 
 1.  Link to the github repo and fork it to your own git account
-2.  Install the dependancies using: npm install
-3.  Run the app using: npm start
+2.  In your chosen editor, clone the repo using: git clone <web-address from your fork>
+3.  Select the main folder of your newly cloned repo
+4.  Right click over the folder name and selct: run in integrated terminal
+5.  In the terminal, install the dependancies using: npm install
+6.  Run the app using: npm start
 
 To run the back end repo locally:-
 
 1.  Link to the github repo and fork it to your own git account
-2.  Install the dependancies using: npm install
-3.  If you are using WSL, run postgres manually using: sudo service postgresql start
-4.  The above command is only required on WSL (Windows Subsystem Linux) as the database server is not initialised at startup
-5.  Set up the database on your system using: npm setup-dbs
-6.  The above command creates the psql database ready to be seeded
-7.  Populate the test database locally using: npm seed
-8.  The pre-written tests can be run using: npm test
-9.  To run your own tests, the server will need to be listening. This is done using port 8080 via the command: run start
-10. Your can them run your own tests using insomnia or other similar tools
+2.  In your chosen editor, clone the repo using: git clone <web-address from your fork>
+3.  Select the main folder of your newly cloned repo
+4.  Right click over the folder name and selct: run in integrated terminal
+5.  Install the dependancies using: npm install
+6.  If you are using WSL, run postgres manually using: sudo service postgresql start
+7.  The above command is only required on WSL (Windows Subsystem Linux) as the database server is not initialised at startup
+8.  Set up the database on your system using: npm setup-dbs
+9.  The above command creates the psql database ready to be seeded
+10. Populate the test database locally using: npm seed
+11. The pre-written tests can be run using: npm test
+12. To run your own tests, the server will need to be listening. This is done using port 8080 via the command: run start
+13. Your can them run your own tests using insomnia or other similar tools

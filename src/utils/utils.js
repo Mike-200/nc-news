@@ -97,15 +97,6 @@ export const postComment = async (article_id, itemBody) => {
   return reply;
 };
 
-export const increaseArticleCounter = async (article_id) => {
-  let path = `/articles/${article_id}`;
-  const itemBody = { inc_votes: 1 };
-  const { reply } = await baseApi.patch(path, itemBody).catch((err) => {
-    return err.response;
-  });
-  return reply;
-};
-
 export const getAllComments = async () => {
   let path = "/comments";
   const { data } = await baseApi.get(path).catch((err) => {
@@ -118,6 +109,15 @@ export const deleteComment = async (comment_id) => {
   let path = `/comments/${comment_id}`;
   const { reply } = await baseApi.delete(path).catch((err) => {
     console.log("error>>>", err.response);
+    return err.response;
+  });
+  return reply;
+};
+
+export const increaseArticleCounter = async (article_id, votes) => {
+  let path = `/articles/${article_id}`;
+  const itemBody = { inc_votes: votes };
+  const { reply } = await baseApi.patch(path, itemBody).catch((err) => {
     return err.response;
   });
   return reply;

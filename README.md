@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# `-front end-`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+This app is the interactive end the user sees.
 
-## Available Scripts
+It allows for general news articles to be reviewed, for them to be filtered by topic and also for them to be sorted in various ways.
 
-In the project directory, you can run:
+The details for each article can be viewed along with the associated comments. The user is able to confirm they 'like' particualr articles (up to 5 times only.)
 
-### `npm start`
+There are various users already created on the backend and it is posisble to list the users and log in.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Logged in users are able to remove comments if required.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The front end is hosted on Netlify. The repo is stored on github. The latest addresses are listed under the 'links' section.
+```
 
-### `npm test`
+## `to run this repo locally`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+1.  Link to the github repo and fork it to your own git account
+2.  In your chosen editor, clone the repo using: git clone <web-address from your fork>
+3.  Select the main folder of your newly cloned repo
+4.  Right click over the folder name and selct: run in integrated terminal
+5.  In the terminal, install the dependancies using: npm install
+6.  Run the app using: npm start
+```
 
-### `npm run build`
+# `-back end-`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+There is also the back end app where the database is managed and the psql database is stored.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This app is hosted on Heroku and the repo is stored on github. The latest addresses are listed under the 'links' section.
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## `to run the back end repo locally`
 
-### `npm run eject`
+```
+1.  Link to the github repo and fork it to your own git account
+2.  In your chosen editor, clone the repo using: git clone <web-address from your fork>
+3.  Select the main folder of your newly cloned repo
+4.  Right click over the folder name and selct: run in integrated terminal
+5.  Install the dependancies using: npm install
+6.  If you are using WSL, run postgres manually using: sudo service postgresql start
+7.  The above command is only required on WSL (Windows Subsystem Linux) as the database server is not initialised at startup
+8.  Set up the database on your system using: npm setup-dbs
+9.  The above command creates the psql database ready to be seeded
+10. Populate the test database locally using: npm seed
+11. The pre-written tests can be run using: npm test
+12. To run your own tests, the server will need to be listening. This is done using port 8080 via the command: run start
+13. Your can them run your own tests using insomnia or other similar tools
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## `-latest Links-`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This site is hosted on Netlify: https://nc-news-mike-j.netlify.app
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## `-github repo's-`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This site: https://github.com/Mike-200/nc-news
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The back-end: https://github.com/Mike-200/be-nc-news
